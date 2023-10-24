@@ -1,5 +1,7 @@
 package com.jpa.shop.domain.order;
 
+import static javax.persistence.FetchType.LAZY;
+
 import com.jpa.shop.domain.Address;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
@@ -10,6 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import lombok.Getter;
+import lombok.Setter;
 
 @Getter
 @Entity
@@ -20,7 +23,8 @@ public class Delivery {
     @Column(name = "delivery_id")
     private Long id;
 
-    @OneToOne(mappedBy = "delivery")
+    @Setter
+    @OneToOne(mappedBy = "delivery", fetch = LAZY)
     private Order order;
 
     @Embedded
