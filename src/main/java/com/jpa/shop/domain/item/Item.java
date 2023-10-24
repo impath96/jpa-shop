@@ -33,6 +33,15 @@ public abstract class Item {
     @ManyToMany(mappedBy = "items")
     private List<Category> categories = new ArrayList<>();
 
+    public Item () {
+    }
+
+    public Item (String name, int price, int stockQuantity) {
+        this.name = name;
+        this.price = price;
+        this.stockQuantity = stockQuantity;
+    }
+
     // 비즈니스 로직 //
     /**
      *  stock 증가

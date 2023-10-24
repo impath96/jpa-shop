@@ -27,10 +27,15 @@ public class Delivery {
     @OneToOne(mappedBy = "delivery", fetch = LAZY)
     private Order order;
 
+    @Setter
     @Embedded
     private Address address;
 
     @Enumerated(EnumType.STRING)
     private DeliveryStatus status;
+
+    public boolean isCompleted() {
+        return this.status == DeliveryStatus.COMPLETE;
+    }
 
 }
